@@ -1,0 +1,64 @@
+---
+import ModelViewer from "../components/ModelViewer.astro";
+import api from "../api";
+import Badge from "../components/Badge.astro";
+import Layout from "../Layout.astro";
+
+const { project } = Astro.props;
+
+export async function getStaticPaths() {
+  const projects = await api.list();
+
+  return projects.map((project) => ({
+    params: {
+      id: project.id,
+    },
+    props: {
+      project,
+    },
+  }));
+}
+---
+
+<Layout title={project.title}>
+  <section class="grid gap-24">
+    <header class="flex flex-col items-center gap-4 text-center">
+      <a
+        href="javascript:history.back()"
+        class="self-center md:self-start font-bold"
+      >
+        ← Volver
+      </a>
+      <Badge
+        intent={project.status === "obra terminada" ? "constructive" : "doubtful"}
+      >
+        {project.status}
+      </Badge>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-center max-w-3xl text-balance">
+        {project.title}
+      </h1>
+    </header>
+    <article class="relative">
+      {project.images.map((image, index) => (
+        <img
+          src={image}
+          alt={`${project.title} - ${index + 1}`}
+          class="rounded-2xl cursor-pointer"
+          onclick={`openModal('${image}', ${index})`}
+        />
+      ))}
+    </article>
+    <section class="flex justify-center py-12">
+      {project.modelUrl ? (
+        <ModelViewer
+          src={project.modelUrl}
+          alt={project.title}
+          autoRotate
+          cameraControls
+          style="width: 100%; height: 500px; max-width: 1000px;"
+        />
+      ) : (
+        <p>No hay modelo 3D disponible para este proyecto.</p>
+      )}
+    </section>
+  </section>

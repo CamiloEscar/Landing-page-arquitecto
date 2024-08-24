@@ -1,0 +1,43 @@
+---
+import Button from "./Button.astro";
+import Input from "./Input.astro";
+import Textarea from "./Textarea.astro";
+
+// ContactForm.astro
+---
+
+<article
+id="contact-form"
+class="bg-secondary rounded-xl md:p-4"
+>
+<div class="grid gap-4">
+  <h2 class="font-medium text-2xl">Formulario de contacto</h2>
+  <form
+    class="grid gap-4 md:gap-8"
+    action="https://docs.google.com/forms/d/e/1FAIpQLSfj9tnPoKWNwRBlG4ofh9RXxwbIw4jOfs-hebNbTdVBUQScJw/formResponse?submit=Submit&usp=pp_url"
+  >
+    <Input
+      required
+      label="Nombre"
+      type="text"
+      name="entry.267758778"
+      class="p-12 border border-black rounded-6"
+    />
+    <Input
+      required
+      label="Email"
+      type="email"
+      name="entry.595346781"
+      class="p-12 border border-black rounded-6"
+    />
+    <Textarea
+      required
+      label="Mensaje"
+      name="entry.155666804"
+      class="p-12 border border-black rounded-6"
+    />
+    <Button intent="primary">Enviar</Button>
+  </form>
+</div>
+</article>
+  

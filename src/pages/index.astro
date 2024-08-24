@@ -1,16 +1,54 @@
 ---
+import api from "../api";
+import Button from "../components/Button.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Layout from "../Layout.astro";
+import ContactInfo from "../components/ContactInfo.astro";
+import ContactForm from "../components/ContactForm.astro";
 
+let projects = await api.list();
+
+// Ordenar los proyectos, destacando los que tienen la propiedad 'featured', y luego seleccionar los primeros 10
+projects = projects.sort((a) => (a.featured ? -1 : 1)).slice(0, 6);
+
+// Desordenar aleatoriamente los 10 proyectos seleccionados
+projects = projects.sort(() => Math.random() - 0.5);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <div class="grid gap-16">
+    <header class="max-w-3xl grid gap-8 mx-auto text-center animate-fade-in">
+      <h1
+        class="font-extrabold text-4xl md:text-5xl md:leading-[3.5rem] text-balance"
+      >
+        Estudio de Arquitectura Nombre Apellido
+      </h1>
+      <p class="text-balance text-lg">
+        Mi estudio cuenta con un equipo de profesionales de primera categoría, y
+        llevamos más de XX años desarrollando obras de arquitectura.
+      </p>
+      <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-12">
+        <a href="/proyectos">
+          <Button class="hover:bg-opacity-75 transition">Proyectos</Button>
+        </a>
+        <a href="#contact">
+          <Button class="hover:bg-opacity-75 transition" intent="primary">Contacto</Button>
+        </a>
+      </div>
+    </header>
+    <section class="grid grid-cols-2 gap-4 md:gap-12">
+      {
+        projects.map((project) => (
+          <a href={`/${project.id}`} class="hover:scale-105 transition-transform">
+            <ProjectCard project={project} class="rounded-lg shadow-md" />
+          </a>
+        ))
+      }
+    </section>
+    <ContactInfo />
+    <ContactForm />
+  
+  
+
+  </div>
+</Layout>

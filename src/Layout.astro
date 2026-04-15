@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-
 import "./globals.css";
 
 interface Props {
@@ -9,10 +8,10 @@ interface Props {
   image?: string;
 }
 
-const { 
-  title, 
+const {
+  title,
   description = "Estudio de arquitectura profesional con más de XX años de experiencia en diseño residencial, comercial y proyectos de construcción.",
-  image = "/og-image.jpg"
+  image = "/og-image.jpg",
 } = Astro.props;
 ---
 
@@ -22,85 +21,231 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Primary Meta Tags -->
+
     <title>
-      {
-        title
-          ? `${title} | Estudio Arq.`
-          : "Estudio de Arquitectura"
-      }
+      {title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"}
     </title>
-    <meta name="title" content={title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"} />
+    <meta
+      name="title"
+      content={title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"}
+    />
     <meta name="description" content={description} />
-    
-    <!-- OpenGraph / Facebook -->
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"} />
+    <meta
+      property="og:title"
+      content={title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"}
+    />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
-    
-    <!-- Twitter -->
+
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"} />
+    <meta
+      property="twitter:title"
+      content={title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"}
+    />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={image} />
-    
+
     <ViewTransitions />
   </head>
-  <body class="min-h-screen bg-[#F8F8F8] text-[#1a1a1a] font-manrope antialiased">
-    <nav class="w-full px-6 md:px-12 py-6 flex items-center justify-between fixed top-0 left-0 right-0 z-50 bg-[#F8F8F8]/90 backdrop-blur-sm">
-      <a href="/" class="font-semibold text-lg tracking-tight hover:!text-[#8CFF2E] transition-colors"
-        >Estudio Arq.</a
+  <body
+    class="min-h-screen bg-[#F8F8F8] text-[#1a1a1a] font-manrope antialiased"
+  >
+    <nav
+      class="w-full px-6 md:px-12 py-6 flex items-center justify-between fixed top-0 left-0 right-0 z-50 bg-[#F8F8F8]/90 backdrop-blur-sm"
+    >
+      <a
+        href="/"
+        class="font-semibold text-lg tracking-tight hover:!text-[#8CFF2E] transition-colors"
       >
-      <ul class="flex gap-8 text-sm font-medium">
-        <li><a href="#servicios" class="hover:!text-[#8CFF2E] transition-colors">Servicios</a></li>
-        <li><a href="#proceso" class="hover:!text-[#8CFF2E] transition-colors">Proceso</a></li>
-        <li><a href="#tecnologia" class="hover:!text-[#8CFF2E] transition-colors">Tecnología</a></li>
-        <li><a href="#proyectos" class="hover:!text-[#8CFF2E] transition-colors">Proyectos</a></li>
-        <li><a href="#contact" class="hover:!text-[#8CFF2E] transition-colors">Contacto</a></li>
+        Estudio Arq.
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="hidden md:flex gap-8 text-sm font-medium">
+        <li>
+          <a href="#servicios" class="hover:!text-[#8CFF2E] transition-colors"
+            >Servicios</a
+          >
+        </li>
+        <li>
+          <a href="#proceso" class="hover:!text-[#8CFF2E] transition-colors"
+            >Proceso</a
+          >
+        </li>
+        <li>
+          <a href="#tecnologia" class="hover:!text-[#8CFF2E] transition-colors"
+            >Tecnología</a
+          >
+        </li>
+        <li>
+          <a href="#proyectos" class="hover:!text-[#8CFF2E] transition-colors"
+            >Proyectos</a
+          >
+        </li>
+        <li>
+          <a href="#contact" class="hover:!text-[#8CFF2E] transition-colors"
+            >Contacto</a
+          >
+        </li>
       </ul>
+
+      <!-- Hamburger button -->
+      <button
+        id="menu-toggle"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 group"
+      >
+        <span
+          id="bar1"
+          class="block w-6 h-px bg-[#1a1a1a] transition-all duration-300 origin-center"
+        ></span>
+        <span
+          id="bar2"
+          class="block w-6 h-px bg-[#1a1a1a] transition-all duration-300"
+        ></span>
+        <span
+          id="bar3"
+          class="block w-6 h-px bg-[#1a1a1a] transition-all duration-300 origin-center"
+        ></span>
+      </button>
     </nav>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-40 bg-[#F8F8F8] flex flex-col items-center justify-center gap-8 text-2xl font-medium
+             translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+      aria-hidden="true"
+    >
+      <a
+        href="#servicios"
+        class="mobile-link hover:text-[#8CFF2E] transition-colors">Servicios</a
+      >
+      <a
+        href="#proceso"
+        class="mobile-link hover:text-[#8CFF2E] transition-colors">Proceso</a
+      >
+      <a
+        href="#tecnologia"
+        class="mobile-link hover:text-[#8CFF2E] transition-colors">Tecnología</a
+      >
+      <a
+        href="#proyectos"
+        class="mobile-link hover:text-[#8CFF2E] transition-colors">Proyectos</a
+      >
+      <a
+        href="#contact"
+        class="mobile-link hover:text-[#8CFF2E] transition-colors">Contacto</a
+      >
+    </div>
+
     <main class="w-full">
       <slot />
     </main>
+
     <footer class="w-full bg-[#1a1a1a] text-white py-12">
-      <div class="max-w-screen-xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
-        <small class="font-semibold text-sm">Estudio Arq. — Todos los derechos reservados</small>
+      <div
+        class="max-w-screen-xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4"
+      >
+        <small class="font-semibold text-sm"
+          >Estudio Arq. — Todos los derechos reservados</small
+        >
         <div class="flex gap-6 text-sm text-white/60">
-          <a href="#" class="hover:!text-[#8CFF2E] transition-colors">Instagram</a>
-          <a href="#" class="hover:!text-[#8CFF2E] transition-colors">LinkedIn</a>
+          <a href="#" class="hover:!text-[#8CFF2E] transition-colors"
+            >Instagram</a
+          >
+          <a href="#" class="hover:!text-[#8CFF2E] transition-colors"
+            >LinkedIn</a
+          >
         </div>
       </div>
     </footer>
 
-    <!-- Scroll Reveal Script -->
     <script>
       function initScrollReveal() {
-        const reveals = document.querySelectorAll('.reveal, .reveal-up');
-        
+        const reveals = document.querySelectorAll(".reveal, .reveal-up");
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                entry.target.classList.add('animate-slide-in-right');
-                entry.target.classList.remove('opacity-0', 'translate-x-12', 'translate-y-8');
+                entry.target.classList.add("animate-slide-in-right");
+                entry.target.classList.remove(
+                  "opacity-0",
+                  "translate-x-12",
+                  "translate-y-8",
+                );
               }
             });
           },
-          { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+          { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
         );
-
         reveals.forEach((el) => observer.observe(el));
       }
 
-      // Init on page load
-      initScrollReveal();
+      function initMobileMenu() {
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+        const bar1 = document.getElementById("bar1");
+        const bar2 = document.getElementById("bar2");
+        const bar3 = document.getElementById("bar3");
+        if (!toggle || !menu) return;
 
-      // Re-init after view transitions
-      document.addEventListener('astro:after-swap', initScrollReveal);
+        let open = false;
+
+        function openMenu() {
+          if (!menu || !toggle || !bar1 || !bar2 || !bar3) return;
+          open = true;
+          menu.classList.remove("translate-x-full");
+          menu.setAttribute("aria-hidden", "false");
+          toggle.setAttribute("aria-expanded", "true");
+          // Animate to ✕
+          bar1!.style.transform = "translateY(6px) rotate(45deg)";
+          bar2!.style.opacity = "0";
+          bar3!.style.transform = "translateY(-6px) rotate(-45deg)";
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeMenu() {
+          if (!menu || !toggle || !bar1 || !bar2 || !bar3) return;
+          open = false;
+          menu.classList.add("translate-x-full");
+          menu.setAttribute("aria-hidden", "true");
+          toggle.setAttribute("aria-expanded", "false");
+          // Reset bars
+          bar1!.style.transform = "";
+          bar2!.style.opacity = "1";
+          bar3!.style.transform = "";
+          document.body.style.overflow = "";
+        }
+
+        toggle.addEventListener("click", () =>
+          open ? closeMenu() : openMenu(),
+        );
+
+        // Close when a link is clicked
+        menu.querySelectorAll(".mobile-link").forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        // Close on Escape
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && open) closeMenu();
+        });
+      }
+
+      initScrollReveal();
+      initMobileMenu();
+
+      document.addEventListener("astro:after-swap", () => {
+        initScrollReveal();
+        initMobileMenu();
+      });
     </script>
   </body>
 </html>

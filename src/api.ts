@@ -8,9 +8,13 @@ export const projectSchema = z.object({
   date: z.string(),
   category: z.string(),
   status: z.string(),
+  location: z.string().optional(),
+  year: z.string().optional(),
+  size: z.string().optional(),
+  description: z.string().optional(),
   images: z.array(z.string()),
-  images2: z.array(z.string()), // Añadir la columna images2
-  modelUrl: z.string(), // O z.array(z.string()) si es un arreglo de URLs
+  images2: z.array(z.string()),
+  modelUrl: z.string(),
 });
 
 const api = {
@@ -38,7 +42,7 @@ const api = {
         .map((row) => row.trim().split("\t"));
 
       return rows.map(
-        ([title, featured, date, category, status, images, images2, modelUrl]) => {
+        ([title, featured, date, category, status, images, images2, modelUrl, location, year, size, description]) => {
           if (!title || !featured || !date || !category || !status || !images || !images2) {
             throw new Error("Missing required data in row.");
           }
@@ -51,8 +55,12 @@ const api = {
             category,
             status,
             images: images.split(",").map((image) => image.trim()),
-            images2: images2.split(",").map((image) => image.trim()), // Procesar images2
-            modelUrl: modelUrl ? modelUrl.trim() : "", // Ajusta según sea necesario
+            images2: images2.split(",").map((image) => image.trim()),
+            modelUrl: modelUrl ? modelUrl.trim() : "",
+            location: location ? location.trim() : undefined,
+            year: year ? year.trim() : undefined,
+            size: size ? size.trim() : undefined,
+            description: description ? description.trim() : undefined,
           });
         }
       );

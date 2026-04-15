@@ -5,39 +5,102 @@ import "./globals.css";
 
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
 }
 
-const { title } = Astro.props;
+const { 
+  title, 
+  description = "Estudio de arquitectura profesional con más de XX años de experiencia en diseño residencial, comercial y proyectos de construcción.",
+  image = "/og-image.jpg"
+} = Astro.props;
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
     <title>
       {
         title
-          ? `Arquitecto Nombre Apellido - ${title}`
-          : "Arquitecto Nombre Apellido"
+          ? `${title} | Estudio Arq.`
+          : "Estudio de Arquitectura"
       }
     </title>
+    <meta name="title" content={title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"} />
+    <meta name="description" content={description} />
+    
+    <!-- OpenGraph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title ? `${title} | Estudio Arq.` : "Estudio de Arquitectura"} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+    
     <ViewTransitions />
   </head>
-  <body class="grid grid-rows-[60px,1fr,60px] gap-4 min-h-svh">
-    <nav class="flex items-center">
-      <a href="/" class="container max-w-screen-lg font-bold text-lg"
-        >Arq. Nombre Apellido</a
+  <body class="min-h-screen bg-[#F8F8F8] text-[#1a1a1a] font-manrope antialiased">
+    <nav class="w-full px-6 md:px-12 py-6 flex items-center justify-between fixed top-0 left-0 right-0 z-50 bg-[#F8F8F8]/90 backdrop-blur-sm">
+      <a href="/" class="font-semibold text-lg tracking-tight hover:!text-[#8CFF2E] transition-colors"
+        >Estudio Arq.</a
       >
+      <ul class="flex gap-8 text-sm font-medium">
+        <li><a href="#servicios" class="hover:!text-[#8CFF2E] transition-colors">Servicios</a></li>
+        <li><a href="#proceso" class="hover:!text-[#8CFF2E] transition-colors">Proceso</a></li>
+        <li><a href="#tecnologia" class="hover:!text-[#8CFF2E] transition-colors">Tecnología</a></li>
+        <li><a href="#proyectos" class="hover:!text-[#8CFF2E] transition-colors">Proyectos</a></li>
+        <li><a href="#contact" class="hover:!text-[#8CFF2E] transition-colors">Contacto</a></li>
+      </ul>
     </nav>
-    <main class="container max-w-screen-lg w-full py-12 md:py-24">
+    <main class="w-full">
       <slot />
     </main>
-    <footer class="bg-black text-white text-center grid place-content-center">
-      <small class="container max-w-screen-lg font-semibold"
-        >Arq. Nombre Apellido</small
-      >
+    <footer class="w-full bg-[#1a1a1a] text-white py-12">
+      <div class="max-w-screen-xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+        <small class="font-semibold text-sm">Estudio Arq. — Todos los derechos reservados</small>
+        <div class="flex gap-6 text-sm text-white/60">
+          <a href="#" class="hover:!text-[#8CFF2E] transition-colors">Instagram</a>
+          <a href="#" class="hover:!text-[#8CFF2E] transition-colors">LinkedIn</a>
+        </div>
+      </div>
     </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+      function initScrollReveal() {
+        const reveals = document.querySelectorAll('.reveal, .reveal-up');
+        
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('animate-slide-in-right');
+                entry.target.classList.remove('opacity-0', 'translate-x-12', 'translate-y-8');
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
+
+        reveals.forEach((el) => observer.observe(el));
+      }
+
+      // Init on page load
+      initScrollReveal();
+
+      // Re-init after view transitions
+      document.addEventListener('astro:after-swap', initScrollReveal);
+    </script>
   </body>
 </html>

@@ -1,0 +1,125 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+}
+
+const stats: Stat[] = [
+  { value: "15+", label: "Años de experiencia" },
+  { value: "200+", label: "Proyectos completados" },
+  { value: "150+", label: "Clientes satisfechos" },
+];
+
+const philosophy = "No solo diseñamos espacios — los construimos. Cada proyecto lo acompañamos desde la idea inicial hasta la entrega final de obra, supervisando cada detalle para que el resultado sea exactamente lo que esperás. Porque creemos que la arquitectura se vive, no solo se ve.";
+---
+
+<section id="sobre-nosotros" class="py-8 md:py-12 bg-[#F8F8F8] relative overflow-hidden">
+  <!-- Subtle background pattern -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, #000 1px, transparent 0); background-size: 40px 40px;"></div>
+  
+  <div class="max-w-screen-xl mx-auto px-6 md:px-12 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Left Column - Content -->
+      <div class="order-2 lg:order-1">
+        <!-- Label -->
+        <span class="text-sm font-mono text-[#8CFF2E] uppercase tracking-[0.2em] mb-4 block reveal-up opacity-0 translate-y-8">
+          Sobre el estudio
+        </span>
+        
+        <!-- Title -->
+        <h2 class="font-bold text-4xl md:text-5xl text-[#1a1a1a] mb-6 reveal-up opacity-0 translate-y-8 delay-100">
+          Arquitectura que se construye
+        </h2>
+        
+        <!-- Subtitle/Philosophy -->
+        <p class="text-[#6B6B6B] text-lg leading-relaxed mb-8 reveal-up opacity-0 translate-y-8 delay-200">
+          {philosophy}
+        </p>
+        
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-6 mb-8">
+          {stats.map((stat, index) => (
+            <div class="text-center reveal-up opacity-0 translate-y-8" style={`animation-delay: ${300 + index * 100}ms`}>
+              <div class="font-display text-3xl md:text-4xl text-[#8CFF2E] mb-1">
+                {stat.value}
+              </div>
+              <div class="text-xs md:text-sm text-[#6B6B6B] font-mono uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <!-- CTA -->
+        <div class="reveal-up opacity-0 translate-y-8 delay-400">
+          <a 
+            href="#contact" 
+            class="inline-flex items-center gap-2 text-[#1a1a1a] font-semibold hover:text-[#8CFF2E] transition-colors"
+          >
+            <span>Hablemos de tu proyecto</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:translate-x-1 transition-transform">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Right Column - Visual Element -->
+      <div class="order-1 lg:order-2 reveal-up opacity-0 translate-y-8 delay-200">
+        <div class="relative aspect-[4/5] md:aspect-[3/4] rounded-2xl overflow-hidden bg-[#E5E5E5]">
+          <!-- Decorative geometric shapes -->
+          <div class="absolute inset-0 bg-gradient-to-br from-[#8CFF2E]/10 to-transparent"></div>
+          
+          <!-- Abstract architectural visualization -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="relative w-4/5 h-4/5">
+              <!-- Main shape -->
+              <div class="absolute inset-0 border-2 border-[#1a1a1a]/20 rounded-lg"></div>
+              <div class="absolute inset-4 border border-[#1a1a1a]/10 rounded-lg"></div>
+              
+              <!-- Accent -->
+              <div class="absolute top-0 right-0 w-20 h-20 bg-[#8CFF2E]/20 rounded-full blur-3xl"></div>
+              <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#1a1a1a]/5 rounded-full blur-3xl"></div>
+              
+              <!-- Text -->
+              <div class="absolute bottom-8 left-8 right-8">
+                <span class="text-xs font-mono text-[#1a1a1a]/40 uppercase tracking-widest">
+                  Studio Architects
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .reveal-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+</style>

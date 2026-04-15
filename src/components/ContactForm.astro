@@ -2,42 +2,62 @@
 import Button from "./Button.astro";
 import Input from "./Input.astro";
 import Textarea from "./Textarea.astro";
-
-// ContactForm.astro
 ---
 
 <article
-id="contact-form"
-class="bg-secondary rounded-xl md:p-4"
+  id="contact-form"
+  class="bg-white rounded-xl p-6 md:p-8 shadow-lg border border-[#E5E5E5]"
 >
-<div class="grid gap-4">
-  <h2 class="font-medium text-2xl">Formulario de contacto</h2>
-  <form
-    class="grid gap-4 md:gap-8"
-    action="https://docs.google.com/forms/d/e/1FAIpQLSfj9tnPoKWNwRBlG4ofh9RXxwbIw4jOfs-hebNbTdVBUQScJw/formResponse?submit=Submit&usp=pp_url"
-  >
-    <Input
-      required
-      label="Nombre"
-      type="text"
-      name="entry.267758778"
-      class="p-12 border border-black rounded-6"
-    />
-    <Input
-      required
-      label="Email"
-      type="email"
-      name="entry.595346781"
-      class="p-12 border border-black rounded-6"
-    />
-    <Textarea
-      required
-      label="Mensaje"
-      name="entry.155666804"
-      class="p-12 border border-black rounded-6"
-    />
-    <Button intent="primary">Enviar</Button>
-  </form>
-</div>
+  <div class="grid gap-6">
+    <h2 class="font-semibold text-2xl text-[#1a1a1a]">Envíanos un mensaje</h2>
+    <form
+      class="grid gap-6"
+      action="https://docs.google.com/forms/d/e/1FAIpQLSfj9tnPoKWNwRBlG4ofh9RXxwbIw4jOfs-hebNbTdVBUQScJw/formResponse?submit=Submit&usp=pp_url"
+    >
+      <div class="grid gap-2">
+        <label for="name" class="text-sm font-medium text-[#1a1a1a]"
+          >Nombre completo</label
+        >
+        <Input
+          required
+          label="Nombre"
+          type="text"
+          name="entry.267758778"
+          placeholder="Juan Pérez"
+          class="w-full px-4 py-3 border border-[#E5E5E5] rounded-lg focus:border-[#8CFF2E] focus:ring-1 focus:ring-[#8CFF2E] outline-none transition-colors placeholder:text-[#999]"
+        />
+      </div>
+      <div class="grid gap-2">
+        <label for="email" class="text-sm font-medium text-[#1a1a1a]"
+          >Correo electrónico</label
+        >
+        <Input
+          required
+          label="Email"
+          type="email"
+          name="entry.595346781"
+          placeholder="juan@email.com"
+          class="w-full px-4 py-3 border border-[#E5E5E5] rounded-lg focus:border-[#8CFF2E] focus:ring-1 focus:ring-[#8CFF2E] outline-none transition-colors placeholder:text-[#999]"
+        />
+      </div>
+      <div class="grid gap-2">
+        <label for="message" class="text-sm font-medium text-[#1a1a1a]"
+          >Mensaje</label
+        >
+        <Textarea
+          required
+          label="Telefono"
+          name="entry.155666804"
+          placeholder="Cuéntanos sobre tu proyecto..."
+          class="w-full px-4 py-3 border border-[#E5E5E5] rounded-lg focus:border-[#8CFF2E] focus:ring-1 focus:ring-[#8CFF2E] outline-none transition-colors placeholder:text-[#999] min-h-[120px]"
+        />
+      </div>
+      <Button intent="primary" class="w-full py-4 text-base"
+        >Enviar mensaje</Button
+      >
+      <p class="text-xs text-[#6B6B6B] text-center">
+        Nos pondremos en contacto dentro de las 24 horas hábiles
+      </p>
+    </form>
+  </div>
 </article>
-  

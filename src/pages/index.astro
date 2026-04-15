@@ -1,54 +1,78 @@
 ---
 import api from "../api";
-import Button from "../components/Button.astro";
-import ProjectCard from "../components/ProjectCard.astro";
 import Layout from "../Layout.astro";
+
+// Import section components
+import HeroSection from "../components/sections/HeroSection.astro";
+// import StatsSection from "../components/sections/StatsSection.astro";
+import ServicesSection from "../components/sections/ServicesSection.astro";
+import ProcessSection from "../components/sections/ProcessSection.astro";
+import TechnologySection from "../components/sections/TechnologySection.astro";
+import ProjectCarousel from "../components/react/ProjectCarousel";
+import AboutSection from "../components/sections/AboutSection.astro";
+import TestimonialsSection from "../components/sections/TestimonialsSection.astro";
+import FAQSection from "../components/sections/FAQSection.astro";
 import ContactInfo from "../components/ContactInfo.astro";
 import ContactForm from "../components/ContactForm.astro";
 
+// Fetch projects for carousel
 let projects = await api.list();
 
-// Ordenar los proyectos, destacando los que tienen la propiedad 'featured', y luego seleccionar los primeros 10
+// Sort and select featured projects
 projects = projects.sort((a) => (a.featured ? -1 : 1)).slice(0, 6);
 
-// Desordenar aleatoriamente los 10 proyectos seleccionados
+// Shuffle selected projects
 projects = projects.sort(() => Math.random() - 0.5);
 ---
 
-<Layout>
-  <div class="grid gap-16">
-    <header class="max-w-3xl grid gap-8 mx-auto text-center animate-fade-in">
-      <h1
-        class="font-extrabold text-4xl md:text-5xl md:leading-[3.5rem] text-balance"
-      >
-        Estudio de Arquitectura Nombre Apellido
-      </h1>
-      <p class="text-balance text-lg">
-        Mi estudio cuenta con un equipo de profesionales de primera categoría, y
-        llevamos más de XX años desarrollando obras de arquitectura.
-      </p>
-      <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-12">
-        <a href="/proyectos">
-          <Button class="hover:bg-opacity-75 transition">Proyectos</Button>
-        </a>
-        <a href="#contact">
-          <Button class="hover:bg-opacity-75 transition" intent="primary">Contacto</Button>
-        </a>
-      </div>
-    </header>
-    <section class="grid grid-cols-2 gap-4 md:gap-12">
-      {
-        projects.map((project) => (
-          <a href={`/${project.id}`} class="hover:scale-105 transition-transform">
-            <ProjectCard project={project} class="rounded-lg shadow-md" />
-          </a>
-        ))
-      }
-    </section>
-    <ContactInfo />
-    <ContactForm />
-  
-  
+<Layout title="Estudio de Arquitectura">
+  <div class="w-full">
+    <!-- 1. Hero - Full screen with cycling text -->
+    <HeroSection />
 
+    <!-- 2. Stats - Brief credentials -->
+    <!-- <StatsSection /> -->
+
+    <!-- 3. Services - What we do -->
+    <ServicesSection />
+
+    <!-- 4. Process - How we work -->
+    <ProcessSection />
+
+    <!-- 5. Technology - Tools we use -->
+    <TechnologySection />
+
+    <!-- 6. Projects - Portfolio showcase -->
+    <ProjectCarousel client:visible projects={projects} />
+
+    <!-- 7. About - Brief intro -->
+    <AboutSection />
+
+    <!-- 8. Testimonials - Client reviews -->
+    <TestimonialsSection />
+
+    <!-- 9. FAQ - Common questions -->
+    <FAQSection />
+
+    <!-- 10. Contact - Contact form -->
+    <section id="contact" class="w-full py-16 md:py-20 bg-[#F8F8F8]">
+      <div class="max-w-screen-xl mx-auto px-6 md:px-12">
+        <div class="mb-12">
+          <span
+            class="text-sm font-mono text-[#8CFF2E] uppercase tracking-[0.2em] reveal-up opacity-0 translate-y-8"
+            >Contacto</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div class="reveal-up opacity-0 translate-y-8 delay-100">
+            <ContactInfo />
+          </div>
+          <div class="reveal-up opacity-0 translate-y-8 delay-200">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </Layout>

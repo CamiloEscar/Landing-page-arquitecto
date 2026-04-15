@@ -1,12 +1,14 @@
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/600.css";
+@import "@fontsource/manrope/700.css";
+@import "@fontsource/fragment-mono/400.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
-@import "@fontsource/poppins/400.css";
-@import "@fontsource/poppins/500.css";
-@import "@fontsource/poppins/600.css";
-@import "@fontsource/poppins/700.css";
-@import "@fontsource/poppins/800.css";
 
 html {
   scroll-behavior: smooth;
@@ -14,7 +16,8 @@ html {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    /* Colores del estilo Framer */
+    --background: 0 0% 97%;
     --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
@@ -23,8 +26,9 @@ html {
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+    /* Verde Lima Framer */
+    --primary: 96 100% 59%;
+    --primary-foreground: 240 10% 3.9%;
 
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -35,8 +39,9 @@ html {
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
 
-    --constructive: 101 73% 41%;
-    --constructive-foreground: 0 0% 98%;
+    /* Verde Lima para constructive */
+    --constructive: 96 100% 59%;
+    --constructive-foreground: 240 10% 3.9%;
 
     --doubtful: 50 100% 39%;
     --doubtful-foreground: 0 0% 98%;
@@ -46,7 +51,7 @@ html {
 
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+    --ring: 96 100% 59%;
 
     --radius: 0.5rem;
   }
@@ -62,8 +67,8 @@ html {
       --popover: 240 10% 3.9%;
       --popover-foreground: 0 0% 98%;
 
-      --primary: 0 0% 98%;
-      --primary-foreground: 240 5.9% 10%;
+      --primary: 96 100% 59%;
+      --primary-foreground: 240 10% 3.9%;
 
       --secondary: 240 3.7% 15.9%;
       --secondary-foreground: 0 0% 98%;
@@ -74,8 +79,8 @@ html {
       --accent: 240 3.7% 15.9%;
       --accent-foreground: 0 0% 98%;
 
-      --constructive: 101 73% 41%;
-      --constructive-foreground: 0 0% 98%;
+      --constructive: 96 100% 59%;
+      --constructive-foreground: 240 10% 3.9%;
 
       --doubtful: 50 100% 39%;
       --doubtful-foreground: 0 0% 98%;
@@ -85,7 +90,7 @@ html {
 
       --border: 240 3.7% 15.9%;
       --input: 240 3.7% 15.9%;
-      --ring: 240 4.9% 83.9%;
+      --ring: 96 100% 59%;
     }
   }
 
@@ -96,6 +101,422 @@ html {
   body {
     @apply bg-background text-foreground;
 
-    font-family: "Poppins", sans-serif;
+    /* Tipografía del estilo Framer */
+    font-family: "Manrope", system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Headings with Inter - elegant, professional */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  /* Hero specific - extra bold */
+  .font-display {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  /* Mono para detalles/tags */
+  .font-mono {
+    font-family: "Fragment Mono", monospace;
+  }
+}
+
+/* ========================================
+   ANIMACIONES SPRING (Estilo Framer)
+   ======================================== */
+
+/* Keyframes para reveal desde la derecha */
+@keyframes slideInRight {
+  from {
+    opacity: 0.001;
+    transform: translateX(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Keyframes para reveal desde abajo */
+@keyframes slideInUp {
+  from {
+    opacity: 0.001;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Key frames para fade in simple */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animaciones con spring easing (Framer style) */
+.animate-slide-in-right {
+  opacity: 0;
+  animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-slide-in-up {
+  opacity: 0;
+  animation: slideInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Delays escalonados para efectos staggered */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* Hover con spring para botones */
+.hover-spring {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-spring:hover {
+  transform: scale(1.02);
+}
+
+.hover-spring:active {
+  transform: scale(0.98);
+}
+
+/* Scroll reveal - elementos que aparecen al entrar en viewport */
+.reveal {
+  opacity: 0;
+  transform: translateX(150px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   TEXT CYCLING ANIMATION (Hero Section) - IMPROVED
+    ======================================== */
+
+/* Enhanced cycling text with scale, blur, and smoother transitions */
+@keyframes cycle-text-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    filter: blur(4px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+    filter: blur(4px);
+  }
+}
+
+/* Letter-by-letter typing effect for active text */
+@keyframes letter-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cycling text with crossfade - 4 items at 2.5s each = 10s total cycle */
+@keyframes cycle-text {
+  0%, 20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25%, 45% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  50%, 100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Individual cycling text with staggered delays */
+.cycle-text {
+  display: inline-block;
+}
+
+.cycle-text-item {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
+}
+
+.cycle-text-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced cycling with scale and blur */
+.cycle-text-item {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  filter: blur(2px);
+  transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity, filter;
+}
+
+.cycle-text-item.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* ========================================
+   STAGGER UTILITIES
+   ======================================== */
+
+.stagger-item {
+  --stagger-index: 0;
+  animation-delay: calc(var(--stagger-index) * 100ms);
+}
+
+.stagger-item-1 { --stagger-index: 1; }
+.stagger-item-2 { --stagger-index: 2; }
+.stagger-item-3 { --stagger-index: 3; }
+.stagger-item-4 { --stagger-index: 4; }
+.stagger-item-5 { --stagger-index: 5; }
+.stagger-item-6 { --stagger-index: 6; }
+
+/* ========================================
+   ANIMATIONS - ALL DIFFERENT STYLES
+   ======================================== */
+
+/* Hero: slide-up with spring easing */
+@keyframes heroSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Services: stagger from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Process: sequential left-to-right */
+@keyframes processSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Technology: fade-in with scale */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Testimonials: slide from sides alternately */
+@keyframes slideInLeftAlt {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRightAlt {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* FAQ: cascade down */
+@keyframes cascadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Contact: slide from right */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Floating shapes animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+/* Parallax helper */
+@keyframes parallax {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50px);
+  }
+}
+
+/* Animation utility classes */
+.animate-hero-slide-up {
+  opacity: 0;
+  animation: heroSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-scale-in {
+  opacity: 0;
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-cascade-down {
+  opacity: 0;
+  animation: cascadeDown 0.4s ease-out forwards;
+}
+
+.animate-slide-in-from-right {
+  opacity: 0;
+  animation: slideInFromRight 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Hero specific delays */
+.hero-delay-1 { animation-delay: 0.6s; }
+.hero-delay-2 { animation-delay: 0.8s; }
+.hero-delay-3 { animation-delay: 1s; }
+.hero-delay-4 { animation-delay: 1.2s; }
+
+/* ========================================
+   REDUCED MOTION PREFERENCE
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   KEN BURNS EFFECT (Project Detail)
+   ======================================== */
+
+@keyframes kenBurns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 25s ease-out forwards;
 }

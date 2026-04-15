@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+.vercel
+
+.agents
+.claude
+pagina-ejemplo.html
+paginaweb.txt

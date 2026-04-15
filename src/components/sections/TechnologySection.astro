@@ -1,0 +1,118 @@
+---
+import type { Technology } from "../../types";
+
+interface Props {
+  technologies?: Technology[];
+}
+
+const defaultTechnologies: Technology[] = [
+  {
+    name: "AutoCAD",
+    category: "CAD",
+    description: "Diseño asistido por computadora para planos técnicos",
+    logo: "../../../public/icons/autocad.svg",
+  },
+  {
+    name: "Revit",
+    category: "BIM",
+    description: "Modelado de información de construcción",
+    logo: "../../../public/icons/revit.png",
+  },
+  {
+    name: "BIM 360",
+    category: "Collaboration",
+    description: "Plataforma colaborativa en la nube",
+    logo: "../../../public/icons/bim360.png",
+  },
+  {
+    name: "SketchUp",
+    category: "3D Modeling",
+    description: "Modelado 3D intuitivo y rápido",
+    logo: "../../../public/icons/sketchup.png",
+  },
+  {
+    name: "Lumion",
+    category: "Rendering",
+    description: "Visualización arquitectónica en tiempo real",
+    logo: "../../../public/icons/lumion.svg",
+  },
+  {
+    name: "Photoshop",
+    category: "Graphics",
+    description: "Post-producción y presentacion de proyectos",
+    logo: "../../../public/icons/photoshop.svg",
+  },
+];
+
+const { technologies = defaultTechnologies } = Astro.props;
+---
+
+<section id="tecnologia" class="py-16 md:py-24 bg-[#1a1a1a] relative overflow-hidden">
+  <!-- Subtle texture overlay -->
+  <div class="absolute inset-0 opacity-[0.02]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
+  
+  <div class="max-w-screen-xl mx-auto px-6 md:px-12 relative">
+    <!-- Section Header with Label -->
+    <div class="mb-12 reveal-up opacity-0 translate-y-8">
+      <span class="text-sm font-mono text-[#8CFF2E] uppercase tracking-[0.2em]">Herramientas</span>
+    </div>
+    
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+      <h2
+        class="font-bold text-4xl md:text-5xl text-white reveal-up opacity-0 translate-y-8"
+      >
+        Tecnología que usamos
+      </h2>
+      <p
+        class="text-[#888] text-lg max-w-md reveal-up opacity-0 translate-y-8 delay-100"
+      >
+        Herramientas de última generación para proyectos de excelencia
+      </p>
+    </div>
+
+    <!-- Technology Grid - fade-in with scale -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {technologies.map((tech, index) => (
+        <div
+          class={`
+            group p-6 border border-[#333] rounded-lg bg-[#222]
+            transition-all duration-300 ease-out
+            hover:border-[#8CFF2E] hover:shadow-[0_0_20px_rgba(140,255,46,0.15)]
+            animate-scale-in
+          `}
+          style={`animation-delay: ${200 + index * 100}ms`}
+        >
+          <!-- Icon/Logo Placeholder -->
+          <div class="mb-4 flex items-center justify-center w-16 h-16 rounded-lg bg-[#333] group-hover:bg-[#8CFF2E] transition-colors">
+            {tech.logo ? (
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                class="w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110"
+              />
+            ) : (
+              <span class="font-bold text-2xl text-[#8CFF2E] group-hover:text-[#1a1a1a]">
+                {tech.name.charAt(0)}
+              </span>
+            )}
+          </div>
+
+          <!-- Name -->
+          <h3 class="font-semibold text-xl text-white mb-2 group-hover:text-[#8CFF2E] transition-colors">
+            {tech.name}
+          </h3>
+
+          <!-- Category Tag -->
+          <span class="inline-block text-xs font-mono uppercase text-[#8CFF2E] mb-3">
+            {tech.category}
+          </span>
+
+          <!-- Description -->
+          <p class="text-[#888] text-sm leading-relaxed">
+            {tech.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

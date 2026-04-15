@@ -1,0 +1,72 @@
+---
+import FAQAccordion from "../react/FAQAccordion";
+
+interface Props {
+  // Project data - can be passed from parent
+}
+
+const faqData = [
+  {
+    question: "¿Cuánto tiempo toma un proyecto típico?",
+    answer: "El tiempo varía según la complejidad. Un proyecto residencial puede tomar entre 2-4 meses desde la concepción hasta la entrega de planos finales. Proyectos comerciales o de mayor escala pueden requerir 6-12 meses.",
+  },
+  {
+    question: "¿Cuál es el costo promedio de un proyecto?",
+    answer: "Cada proyecto es único y el costo depende de múltiples factores: tamaño, complejidad, materiales, ubicación y alcance. Ofrecemos presupuestos personalizados después de la reunión inicial gratuita.",
+  },
+  {
+    question: "¿Qué permisos necesito para construir?",
+    answer: "Los permisos varían según la ubicación y tipo de proyecto. Generalmente se requiere permiso de construcción municipal, aprobación de planos, y en algunos casos permisos ambientales. Nosotros te guiamos en todo el proceso de gestión de permisos.",
+  },
+  {
+    question: "¿Ofrecen garantía en sus proyectos?",
+    answer: "Sí,Todos nuestros proyectos incluyen garantía de diseño. Responsabilizamos por la calidad del diseño y la documentación técnica proporcionada. Para la ejecución de obra, coordinamos con contratistas que ofrecen sus propias garantías.",
+  },
+  {
+    question: "¿Cómo es el proceso de pago?",
+    answer: "El proceso de pago se estructura en etapas: 30% para iniciar el anteproyecto, 40% para la entrega de planos finales, y 30% al completar la documentación. Aceptamos transferencias bancarias y cheques.",
+  },
+  {
+    question: "¿Trabajan con clientes fuera de la ciudad?",
+    answer: "Sí, tenemos experiencia en proyectos a nivel nacional e internacional. Utilizamos herramientas de colaboración virtual para mantener comunicación fluida y realizar seguimientos remotos eficientes.",
+  },
+  {
+    question: "¿Cómo es el proceso de construcción?",
+    answer: "Como arquitecto y constructor, acompaño todo el proceso de obra: desde la planificación y contratación de mano de obra hasta la supervisión diaria. Te entregamos el proyecto terminado, listo para habitar, con seguimiento de plazos y presupuesto.",
+  },
+  {
+    question: "¿Qué incluye el proyecto final?",
+    answer: "El proyecto final incluye: planos arquitectónicos completos, plantas, cortes y fachadas; especificaciones técnicas de materiales; presupuesto detallado de obra; renders fotorrealistas 3D; y documentación necesaria para permisos de construcción.",
+  },
+];
+---
+
+<section id="faq" class="py-8 md:py-12 bg-white">
+  <div class="max-w-screen-xl mx-auto px-6 md:px-12">
+    <!-- Section Header with Label -->
+    <div class="mb-12 reveal-up opacity-0 translate-y-8">
+      <span class="text-sm font-mono text-[#8CFF2E] uppercase tracking-[0.2em]">FAQ</span>
+    </div>
+    
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+      <h2
+        class="font-bold text-4xl md:text-5xl text-[#1a1a1a] reveal-up opacity-0 translate-y-8"
+      >
+        Preguntas Frecuentes
+      </h2>
+      <p
+        class="text-[#6B6B6B] text-lg max-w-md reveal-up opacity-0 translate-y-8 delay-100"
+      >
+        Resolvemos tus dudas sobre nuestros servicios
+      </p>
+    </div>
+
+    <!-- FAQ Container -->
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal-up opacity-0 translate-y-8 delay-200">
+        <!-- React Island - FAQ Accordion -->
+        <FAQAccordion client:visible items={faqData} />
+      </div>
+    </div>
+  </div>
+</section>

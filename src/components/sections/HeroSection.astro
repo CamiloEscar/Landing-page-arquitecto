@@ -1,0 +1,528 @@
+---
+interface Props {
+  studioName?: string;
+  role?: string;
+  availability?: string;
+  phone?: string;
+  whatsappMessage?: string;
+  instagram?: string;
+  linkedin?: string;
+}
+
+const {
+  studioName = "Federico Molachino",
+  role = "Arquitecto y constructor — Diseño y ejecución de proyectos",
+  availability = "Disponible para proyectos",
+  phone = "+543442354903",
+  whatsappMessage = "Hola! Me interesa conocer más sobre sus proyectos de arquitectura",
+  instagram = "arq_federico_molachino",
+  linkedin = "federico-molachino",
+} = Astro.props;
+
+const whatsappLink = `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(whatsappMessage)}`;
+const instagramLink = `https://instagram.com/${instagram}`;
+const linkedinLink = `https://linkedin.com/in/${linkedin}`;
+const email = "federicomolachino@gmail.com";
+---
+
+<section
+  class="relative min-h-screen flex flex-col bg-[#F8F8F8] overflow-hidden"
+>
+  <!-- Animated gradient mesh background -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[-5%] w-[700px] h-[700px] bg-gradient-to-br from-[#8CFF2E]/20 via-[#8CFF2E]/10 to-transparent rounded-full blur-3xl animate-pulse-slow"
+    >
+    </div>
+    <div
+      class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-gradient-to-tr from-[#8CFF2E]/15 to-transparent rounded-full blur-3xl animate-pulse-slow-delayed"
+    >
+    </div>
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-radial from-[#8CFF2E]/5 to-transparent rounded-full blur-3xl"
+    >
+    </div>
+  </div>
+
+  <!-- Floating geometric shapes -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div
+      class="absolute top-[15%] left-[10%] w-20 h-20 border-2 border-[#8CFF2E]/20 rotate-12 animate-float-delayed"
+    >
+    </div>
+    <div
+      class="absolute top-[25%] right-[15%] w-16 h-16 border-2 border-[#8CFF2E]/15 rotate-45 animate-float"
+    >
+    </div>
+    <div
+      class="absolute bottom-[30%] left-[20%] w-12 h-12 bg-[#8CFF2E]/10 rounded-full animate-float-slow"
+    >
+    </div>
+    <div
+      class="absolute top-[40%] right-[25%] w-24 h-24 border border-[#8CFF2E]/10 rotate-[30deg] animate-float-reverse"
+    >
+    </div>
+  </div>
+
+  <!-- Main content - CENTERED -->
+  <div
+    class="relative flex-1 flex items-center justify-center px-6 md:px-12 lg:px-20 py-12"
+  >
+    <!-- TWO COLUMNS - CENTERED -->
+    <div
+      class="flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-16 max-w-5xl w-full"
+    >
+      <!-- LEFT COLUMN - Profile + Name + Social Icons -->
+      <div
+        class="flex flex-col items-center lg:items-start text-center lg:text-left"
+      >
+        <!-- Profile Image with lime ring -->
+        <div
+          class="relative w-32 h-32 md:w-36 md:h-36 mb-4 animate-scale-in opacity-0"
+        >
+          <div
+            class="absolute inset-0 rounded-full border-4 border-[#8CFF2E]/30 animate-pulse-ring"
+          >
+          </div>
+          <div
+            class="absolute inset-1 rounded-full border-2 border-[#8CFF2E]/50"
+          >
+          </div>
+          <div
+            class="absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br from-[#1a1a1a]/5 to-[#8CFF2E]/10"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+              alt="Federico Molachino"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        <!-- Social Icons below image -->
+        <div
+          class="flex items-center gap-3 mb-4 animate-fade-in opacity-0"
+          style="--delay: 0.3s;"
+        >
+          <a
+            href={instagramLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-full bg-[#1a1a1a]/5 flex items-center justify-center text-[#6B6B6B] hover:bg-[#8CFF2E] hover:text-[#1a1a1a] transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a
+            href={linkedinLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-full bg-[#1a1a1a]/5 flex items-center justify-center text-[#6B6B6B] hover:bg-[#8CFF2E] hover:text-[#1a1a1a] transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              ></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-9 h-9 rounded-full bg-[#1a1a1a]/5 flex items-center justify-center text-[#6B6B6B] hover:bg-[#8CFF2E] hover:text-[#1a1a1a] transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href={`mailto:${email}`}
+            class="w-9 h-9 rounded-full bg-[#1a1a1a]/5 flex items-center justify-center text-[#6B6B6B] hover:bg-[#8CFF2E] hover:text-[#1a1a1a] transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Name - SMALLER -->
+        <h1
+          class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1a1a1a] leading-tight tracking-tight animate-slide-in-left opacity-0"
+          style="--delay: 0.1s;"
+        >
+          {studioName}
+        </h1>
+
+        <!-- Role -->
+        <p
+          class="text-sm md:text-base text-[#6B6B6B] mt-1 animate-slide-in-left opacity-0"
+          style="--delay: 0.2s;"
+        >
+          {role}
+        </p>
+
+        <!-- Availability badge -->
+        <div
+          class="inline-flex items-center gap-2 mt-3 animate-slide-in-left opacity-0"
+          style="--delay: 0.25s;"
+        >
+          <span class="relative flex h-2.5 w-2.5">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8CFF2E] opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#8CFF2E]"
+            ></span>
+          </span>
+          <span class="text-sm font-medium text-[#6B6B6B]">{availability}</span>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN - Title + Categories + CTA -->
+      <div
+        class="flex flex-col items-center lg:items-start text-center lg:text-left max-w-lg"
+      >
+        <!-- Main message with word animations -->
+        <p
+          class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#1a1a1a] leading-tight mb-6"
+        >
+          <span
+            class="inline-block text-[#8CFF2E] animate-slide-in-left opacity-0"
+            style="--delay: 0.4s;">Diseño y construcción</span
+          >
+          <span
+            class="inline-block italic animate-slide-in-up opacity-0"
+            style="--delay: 0.5s;">de espacios</span
+          >
+          <span
+            class="inline-block animate-slide-in-right opacity-0"
+            style="--delay: 0.6s;">que se transforman</span
+          >
+        </p>
+
+        <!-- Categories row -->
+        <div
+          class="flex flex-wrap items-center justify-center lg:justify-start gap-2 md:gap-4 mb-6"
+        >
+          <span
+            class="animate-slide-in-left opacity-0 font-medium text-[#1a1a1a] text-sm md:text-base"
+            style="--delay: 0.7s;">CASAS</span
+          >
+          <span class="text-[#8CFF2E]">•</span>
+          <span
+            class="animate-slide-in-up opacity-0 font-medium text-[#1a1a1a] text-sm md:text-base"
+            style="--delay: 0.8s;">DEPARTAMENTOS</span
+          >
+          <span class="text-[#8CFF2E]">•</span>
+          <span
+            class="animate-slide-in-right opacity-0 font-medium text-[#1a1a1a] text-sm md:text-base"
+            style="--delay: 0.9s;">LOCALES COMERCIALES</span
+          >
+          <span class="text-[#8CFF2E]">•</span>
+          <span
+            class="animate-fade-in opacity-0 font-medium text-[#1a1a1a] text-sm md:text-base"
+            style="--delay: 1s;">REMODELACIONES</span
+          >
+        </div>
+
+        <!-- CTA Buttons -->
+        <div
+          class="flex flex-wrap items-center justify-center lg:justify-start gap-3"
+        >
+          <!-- <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 px-5 py-2.5 bg-[#8CFF2E] text-[#1a1a1a] font-semibold rounded-lg hover:bg-[#8CFF2E]/90 transition-all duration-300 hover:scale-105 animate-slide-in-left opacity-0" style="--delay: 1.1s;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="group-hover:scale-110 transition-transform">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp
+          </a> -->
+          <a
+            href="#proyectos"
+            class="group flex items-center gap-2 px-5 py-2.5 bg-[#1a1a1a] text-white font-semibold rounded-lg hover:bg-[#1a1a1a]/90 transition-all duration-300 hover:scale-105 animate-slide-in-right opacity-0"
+            style="--delay: 1.2s;"
+          >
+            Ver proyectos
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="group-hover:translate-x-1 transition-transform"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact bar - IMPROVED -->
+  <div class="bg-[#1a1a1a] text-white py-5 relative z-10">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <!-- Text with icon -->
+        <div
+          class="flex items-center gap-3 animate-fade-in opacity-0"
+          style="--delay: 1.4s;"
+        >
+          <span class="text-2xl">💬</span>
+          <div>
+            <p class="text-lg font-medium">¿Tenés un proyecto en mente?</p>
+            <p class="text-sm text-white/60">
+              Charlamos y te ayudamos a hacerlo realidad
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact buttons -->
+        <div
+          class="flex items-center gap-4 animate-fade-in opacity-0"
+          style="--delay: 1.5s;"
+        >
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2 bg-[#8CFF2E] text-[#1a1a1a] font-medium rounded-lg hover:bg-[#8CFF2E]/90 transition-all duration-300 hover:scale-105 text-sm"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              ></path>
+            </svg>
+            WhatsApp
+          </a>
+          <a
+            href={`tel:${phone}`}
+            class="flex items-center gap-2 px-4 py-2 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all duration-300 text-sm"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path>
+            </svg>
+            {phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes pulseSlow {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+  @keyframes pulseRing {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(1.02);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(5deg);
+    }
+  }
+  @keyframes floatDelayed {
+    0%,
+    100% {
+      transform: translateY(0) rotate(12deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(17deg);
+    }
+  }
+  @keyframes floatSlow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes floatReverse {
+    0%,
+    100% {
+      transform: translateY(0) rotate(30deg);
+    }
+    50% {
+      transform: translateY(15px) rotate(25deg);
+    }
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+  .animate-slide-in-up {
+    animation: slideInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+  }
+  .animate-scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+  .animate-pulse-slow {
+    animation: pulseSlow 8s ease-in-out infinite;
+  }
+  .animate-pulse-slow-delayed {
+    animation: pulseSlow 10s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  .animate-pulse-ring {
+    animation: pulseRing 3s ease-in-out infinite;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: floatDelayed 7s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+  .animate-float-slow {
+    animation: floatSlow 8s ease-in-out infinite;
+  }
+  .animate-float-reverse {
+    animation: floatReverse 5s ease-in-out infinite;
+  }
+</style>
